@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="com.orangehrm.tests.LdapTests_1"/>
+      <class name="com.orangehrm.tests.LdapTests_2"/>
+      <class name="com.orangehrm.tests.LdapTests_3"/>
+      <class name="com.orangehrm.tests.LdapTests_4"/>
+      <class name="com.orangehrm.tests.LdapTests_5"/>
+      <class name="com.orangehrm.tests.LdapTests_6"/>
+      <class name="com.orangehrm.tests.LdapTests_7"/>
+      <class name="com.orangehrm.tests.LdapTests_8"/>
+      <class name="com.orangehrm.tests.LdapTests_9"/>
+      <class name="com.orangehrm.tests.LdapTests_10"/>
+      <class name="com.orangehrm.tests.LdapTests_11"/>
+      <class name="com.orangehrm.tests.LdapTests_12"/>
+      <class name="com.orangehrm.tests.LdapTests_13"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

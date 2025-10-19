@@ -1,0 +1,5 @@
+Host	Port	Distinguished Name	Password	Base Distinguished Name	User Name Attribute	User Unique Id Attribute	User Search Filter	First Name	Middle Name	Last Name	User Satus	Work Email	Emp Id	Sync Intervel
+local	636	Hey	Hey123	Hello	hh	123	person1	takenName	midname	tn	pass	Hello123@gmail.com	321	2
+host		sivaji	sivaji123	boss	SMA	#12098	objectClass=private	Paul	coll	Collings	Passed	MSDhoni123@gmail.com	097MsD543	1
+localhost		Admin	admin123	ou=users	cn	entryUUID					Enabled	paul1@osohrm.com	24	
+				admin										
