@@ -18,8 +18,8 @@ import com.orangehrm.utilities.ScreenshotUtil;
  */
 public class LdapTests_5 extends BaseTest {
 
-    // TC_023 - Click all toggles and Save
-    @Test(priority = 23, description = "Verify all LDAP toggle buttons and Save behavior")
+    // TC_021
+    @Test(priority = 21, description = "Verify all LDAP toggle buttons and Save behavior")
     public void verifyAllTogglesAndSaveButton() {
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.ldapToggleBtn)).click();
         List<WebElement> toggles = ldapPage.allTogglesBtn;
@@ -39,8 +39,8 @@ public class LdapTests_5 extends BaseTest {
         }
     }
 
-    // TC_024 - Encryption dropdown + Save
-    @Test(priority = 24, description = "Verify encryption dropdown and Save functionality")
+    // TC_022
+    @Test(priority = 22, description = "Verify encryption dropdown and Save functionality")
     public void verifyEncryptionDropdownAndSave() throws Exception {
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.encryptionDropdown)).click();
         robot.keyPress(KeyEvent.VK_DOWN);
@@ -57,8 +57,8 @@ public class LdapTests_5 extends BaseTest {
         }
     }
 
-    // TC_025 - Test Connection after encryption
-    @Test(priority = 25, description = "Verify Test Connection button after selecting encryption")
+    // TC_023
+    @Test(priority = 23, description = "Verify Test Connection button after selecting encryption")
     public void verifyTestConnectionButtonAfterEncryption() throws Exception {
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.encryptionDropdown)).click();
         robot.keyPress(KeyEvent.VK_DOWN);
@@ -72,32 +72,32 @@ public class LdapTests_5 extends BaseTest {
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.testConnectionButton)).click();
     }
 
-    // TC_026 - Disclaimer visibility
-    @Test(priority = 26, description = "Verify Disclaimer Message visibility")
+    // TC_024
+    @Test(priority = 24, description = "Verify Disclaimer Message visibility")
     public void verifyDisclaimerMessage() {
         boolean isDisplayed = ldapPage.disclaimerMessage.isDisplayed();
         Reporter.log("Disclaimer Message visible: " + isDisplayed, true);
         Assert.assertTrue(isDisplayed, "Disclaimer Message not visible");
     }
 
-    // TC_028 - Work Email toggle required behavior
-    @Test(priority = 28, description = "Verify Work Email toggle and required text")
+    // TC_025
+    @Test(priority = 25, description = "Verify Work Email toggle and required text")
     public void verifyWorkEmailToggle() {
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.workMailToggleBtn)).click();
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.saveButton)).click();
         Assert.assertTrue(ldapPage.workEmailRequiredText.isDisplayed(), "Work Email required text not visible");
     }
 
-    // TC_029 - Employee ID toggle required behavior
-    @Test(priority = 29, description = "Verify Employee ID toggle and required text")
+    // TC_026
+    @Test(priority = 26, description = "Verify Employee ID toggle and required text")
     public void verifyEmployeeIdToggle() {
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.empIdToggleBtn)).click();
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.saveButton)).click();
         Assert.assertTrue(ldapPage.empIdRequiredText.isDisplayed(), "Employee ID required text not visible");
     }
 
-    // TC_030 - Add Settings button
-    @Test(priority = 30, description = "Verify Add Settings button functionality")
+    // TC_027
+    @Test(priority = 27, description = "Verify Add Settings button functionality")
     public void verifyAddSettingsButton() {
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.addSettingsBtn)).click();
         Reporter.log("Clicked Add Settings button", true);

@@ -39,9 +39,8 @@ public class LdapTests_7 extends BaseTest {
         ldapHelper = new LdapTestHelper(driver, wait, robot, ldapPage);
     }
 
-	// ------------------ SECTION 1: Save Button Validations ------------------
-
-	@Test(priority = 38, description = "Update Base Distinguished Name and verify Save button")
+    // TC_036
+	@Test(priority = 36, description = "Update Base Distinguished Name and verify Save button")
 	public void verifySaveAfterBaseDNUpdate() {
 	    try {
 	    	ldapPage.bindButton.click();
@@ -93,61 +92,8 @@ public class LdapTests_7 extends BaseTest {
 	    }
 	}
 
-	@Test(priority = 40, description = "Update Distinguished Name, Password, Base Distinguished Name and verify Save")
-	public void verifySaveAfterMultipleFieldUpdates() {
-	    try {
-	        // Use fallback values for all fields
-	        String distinguishedName = ldapHelper.getCellData(1, 2, "Admin");
-	        String password = ldapHelper.getCellData(1, 3, "admin123");
-	        String baseDN = ldapHelper.getCellData(1, 4, "ou=users");
-	        
-	        ldapHelper.updateField(ldapPage.DistingNameTxtFields, distinguishedName);
-	        ldapHelper.updateField(ldapPage.PasswordTxtFields, password);
-	        ldapHelper.updateField(ldapPage.BdNameTxtField, baseDN);
-
-	        // Verify save button is enabled
-	        if (!ldapPage.isSaveEnabled()) {
-	            Reporter.log("Save button is not enabled after multiple field updates", true);
-	            ScreenshotUtil.captureScreenshot(driver, "verifySaveAfterMultipleFieldUpdates_SaveDisabled");
-	            Assert.fail("Save button is not enabled");
-	        }
-
-	        // Click save button with verification
-	        ldapHelper.clickWithVerification(ldapPage.saveButton, "Save");
-	        
-	        Reporter.log("Save button clicked after multiple field updates, waiting for success message...", true);
-	        
-	        // Check for success message
-	        boolean successDisplayed = ldapPage.waitForSuccessMessage();
-	        
-	        if (successDisplayed) {
-	            Reporter.log("Successfully Updated message is visible", true);
-	            Assert.assertTrue(true, "Success message displayed");
-	        } else {
-	            // Verify field values persisted
-	            String currentDN = ldapPage.DistingNameTxtFields.getAttribute("value");
-	            String currentBaseDN = ldapPage.BdNameTxtField.getAttribute("value");
-	            
-	            if (distinguishedName.equals(currentDN) && baseDN.equals(currentBaseDN)) {
-	                Reporter.log("Field values persisted (operation likely succeeded silently)", true);
-	                Assert.assertTrue(true, "Field values persisted");
-	            } else {
-	            	ldapHelper.checkForDetailedError();
-	                ScreenshotUtil.captureScreenshot(driver, "verifySaveAfterMultipleFieldUpdatesFailed");
-	                Reporter.log("Save operation failed - no success message and field values not persisted", true);
-	                Assert.fail("Save operation failed");
-	            }
-	        }
-	    } catch (Exception e) {
-	        ScreenshotUtil.captureScreenshot(driver, "verifySaveAfterMultipleFieldUpdatesException");
-	        Reporter.log("Test failed with exception: " + e.getMessage(), true);
-	        Assert.fail("Test failed: " + e.getMessage());
-	    }
-	}
-
-	// ------------------ SECTION 2: Test Connection Validations ------------------
-
-	@Test(priority = 39, description = "Verify Test Connection popup after updating Base DN")
+	// TC_037
+	@Test(priority = 37, description = "Verify Test Connection popup after updating Base DN")
 	public void verifyTestConnectionPopup() {
 	    try {
 	        String baseDN = ldapHelper.getCellData(1, 4, "ou=users");
@@ -200,9 +146,64 @@ public class LdapTests_7 extends BaseTest {
 	    }
 	}
 
+
+
+	// TC_038
+	@Test(priority = 38, description = "Update Distinguished Name, Password, Base Distinguished Name and verify Save")
+	public void verifySaveAfterMultipleFieldUpdates() {
+	    try {
+	        // Use fallback values for all fields
+	        String distinguishedName = ldapHelper.getCellData(1, 2, "Admin");
+	        String password = ldapHelper.getCellData(1, 3, "admin123");
+	        String baseDN = ldapHelper.getCellData(1, 4, "ou=users");
+	        
+	        ldapHelper.updateField(ldapPage.DistingNameTxtFields, distinguishedName);
+	        ldapHelper.updateField(ldapPage.PasswordTxtFields, password);
+	        ldapHelper.updateField(ldapPage.BdNameTxtField, baseDN);
+
+	        // Verify save button is enabled
+	        if (!ldapPage.isSaveEnabled()) {
+	            Reporter.log("Save button is not enabled after multiple field updates", true);
+	            ScreenshotUtil.captureScreenshot(driver, "verifySaveAfterMultipleFieldUpdates_SaveDisabled");
+	            Assert.fail("Save button is not enabled");
+	        }
+
+	        // Click save button with verification
+	        ldapHelper.clickWithVerification(ldapPage.saveButton, "Save");
+	        
+	        Reporter.log("Save button clicked after multiple field updates, waiting for success message...", true);
+	        
+	        // Check for success message
+	        boolean successDisplayed = ldapPage.waitForSuccessMessage();
+	        
+	        if (successDisplayed) {
+	            Reporter.log("Successfully Updated message is visible", true);
+	            Assert.assertTrue(true, "Success message displayed");
+	        } else {
+	            // Verify field values persisted
+	            String currentDN = ldapPage.DistingNameTxtFields.getAttribute("value");
+	            String currentBaseDN = ldapPage.BdNameTxtField.getAttribute("value");
+	            
+	            if (distinguishedName.equals(currentDN) && baseDN.equals(currentBaseDN)) {
+	                Reporter.log("Field values persisted (operation likely succeeded silently)", true);
+	                Assert.assertTrue(true, "Field values persisted");
+	            } else {
+	            	ldapHelper.checkForDetailedError();
+	                ScreenshotUtil.captureScreenshot(driver, "verifySaveAfterMultipleFieldUpdatesFailed");
+	                Reporter.log("Save operation failed - no success message and field values not persisted", true);
+	                Assert.fail("Save operation failed");
+	            }
+	        }
+	    } catch (Exception e) {
+	        ScreenshotUtil.captureScreenshot(driver, "verifySaveAfterMultipleFieldUpdatesException");
+	        Reporter.log("Test failed with exception: " + e.getMessage(), true);
+	        Assert.fail("Test failed: " + e.getMessage());
+	    }
+	}
+
 	
-	
-	@Test(priority = 41, description = "Verify Test Connection popup after updating Distinguished Name, Password, Base Distinguished Name")
+	// TC_039
+	@Test(priority = 39, description = "Verify Test Connection popup after updating Distinguished Name, Password, Base Distinguished Name")
 	public void verifyTestConnectionAfterMultipleFieldUpdates() {
 		try {
 			ldapHelper.updateField(ldapPage.DistingNameTxtFields, ldapHelper.getCellData(1, 2, "Admin"));
@@ -232,9 +233,8 @@ public class LdapTests_7 extends BaseTest {
 		}
 	}
 
-	// ------------------ SECTION 3: Dropdown & Attribute Updates ------------------
-
-	@Test(priority = 42, description = "Update attributes & verify Save")
+	// TC_040
+	@Test(priority = 40, description = "Update attributes & verify Save")
 	public void verifySaveAfterDropdownAndAttributesUpdate() {
 		try {
 			ldapHelper.updateField(ldapPage.BdNameTxtField1, ldapHelper.getCellData(1, 4, "ou=users"));
@@ -270,7 +270,8 @@ public class LdapTests_7 extends BaseTest {
 		}
 	}
 
-	@Test(priority = 43, description = "Update attributes & verify Test Connection")
+	// TC_041
+	@Test(priority = 41, description = "Update attributes & verify Test Connection")
 	public void verifyTestConnectionAfterDropdownAndAttributesUpdate() {
 		try {
 			ldapHelper.updateField(ldapPage.BdNameTxtField1, ldapHelper.getCellData(1, 4, "ou=users"));
@@ -307,9 +308,8 @@ public class LdapTests_7 extends BaseTest {
 		}
 	}
 
-	// ------------------ SECTION 4: Encryption Dropdown Updates & Save/Test ------------------
-
-	@Test(priority = 44, description = "Select encryption, update fields, verify Save & Test Connection")
+	// TC_042
+	@Test(priority = 42, description = "Select encryption, update fields, verify Save & Test Connection")
 	public void verifyEncryptionDropdownAndTestConnection() {
 		try {
 			// Use JavaScript click for dropdown to avoid interception

@@ -22,9 +22,7 @@ import com.orangehrm.utilities.ScreenshotUtil;
  */
 public class LdapTests_6 extends BaseTest {
 
-    /* ----------------------------------------------------------------------
-     * Utility method to check required messages visibility
-     * ---------------------------------------------------------------------- */
+    /* Utility method to check required messages visibility */
     private boolean checkRequiredMessages(String screenshotName) {
         boolean visible = false;
         for (WebElement elem : ldapPage.AllRequiredTxt) {
@@ -39,30 +37,24 @@ public class LdapTests_6 extends BaseTest {
         return visible;
     }
 
-    /* ----------------------------------------------------------------------
-     * SECTION 1: Validation of Required Field Messages on Save
-     * ---------------------------------------------------------------------- */
-
-    @Test(priority = 31, description = "Verify required field messages appear after clicking Save button")
+    // TC_028
+    @Test(priority = 28, description = "Verify required field messages appear after clicking Save button")
     public void verifyRequiredMessageOnSave() {
         ldapPage.saveButton.click();
         Assert.assertTrue(checkRequiredMessages("RequiredMessageOnSave"), 
                 "No required message displayed after Save");
     }
 
-    @Test(priority = 32, description = "Count total number of required messages after Save click")
+    // TC_029
+    @Test(priority = 29, description = "Count total number of required messages after Save click")
     public void countRequiredMessagesOnSave() {
         ldapPage.saveButton.click();
         int count = ldapPage.AllRequiredTxt.size();
         Reporter.log("Total required messages displayed after Save: " + count, true);
     }
 
-    /* ----------------------------------------------------------------------
-     * SECTION 2: OrangeHRM Logo & Link Verification
-     * ---------------------------------------------------------------------- */
-
- // TC_033
-    @Test(priority = 33, description = "Verify OrangeHRM image and footer link URLs are same (protocol agnostic)")
+ // TC_030
+    @Test(priority = 30, description = "Verify OrangeHRM image and footer link URLs are same (protocol agnostic)")
     public void verifyOrangeHRMLogoAndLinkSame() {
         // Click on the logo to get its URL
         ldapPage.OrgHrmImage.click();
@@ -87,8 +79,8 @@ public class LdapTests_6 extends BaseTest {
         }
     }
 
-
-    @Test(priority = 34, description = "Verify OrangeHRM image and link open the same URL in new tab")
+    // TC_031
+    @Test(priority = 31, description = "Verify OrangeHRM image and link open the same URL in new tab")
     public void verifyOrangeHRMLogoAndLinkNewTab() {
         ldapPage.OrgHrmImage.click();
         String expectedUrl = driver.getCurrentUrl();
@@ -110,29 +102,24 @@ public class LdapTests_6 extends BaseTest {
         Reporter.log("OrangeHRM logo and link open the same URL in new tab", true);
     }
 
-    /* ----------------------------------------------------------------------
-     * SECTION 3: Test Connection Button - Required Message Validation
-     * ---------------------------------------------------------------------- */
-
-    @Test(priority = 35, description = "Verify required messages appear after clicking Test Connection button")
+    // TC_032
+    @Test(priority = 32, description = "Verify required messages appear after clicking Test Connection button")
     public void verifyRequiredMessageOnTestConnection() {
         ldapPage.testConnectionButton.click();
         Assert.assertTrue(checkRequiredMessages("RequiredMessageOnTestConnection"), 
                 "No required message displayed after Test Connection");
     }
 
-    @Test(priority = 36, description = "Count total number of required messages after clicking Test Connection button")
+    // TC_033
+    @Test(priority = 33, description = "Count total number of required messages after clicking Test Connection button")
     public void countRequiredMessagesOnTestConnection() {
         ldapPage.testConnectionButton.click();
         int count = ldapPage.AllRequiredTxt.size();
         Reporter.log("Total required messages after Test Connection: " + count, true);
     }
 
-    /* ----------------------------------------------------------------------
-     * SECTION 4: Bind Settings Hide/Show Behavior
-     * ---------------------------------------------------------------------- */
-
-    @Test(priority = 37, description = "Verify Save behavior after hiding Bind Settings")
+    // TC_034
+    @Test(priority = 34, description = "Verify Save behavior after hiding Bind Settings")
     public void verifySaveAfterHidingBindSettings() {
         ldapPage.bindButton.click();
         ldapPage.saveButton.click();
@@ -140,7 +127,8 @@ public class LdapTests_6 extends BaseTest {
         Reporter.log("After hiding Bind Settings, Save shows " + count + " required messages", true);
     }
 
-    @Test(priority = 38, description = "Verify Test Connection behavior after hiding Bind Settings")
+    // TC_035
+    @Test(priority = 35, description = "Verify Test Connection behavior after hiding Bind Settings")
     public void verifyTestConnectionAfterHidingBindSettings() {
         ldapPage.bindButton.click();
         ldapPage.testConnectionButton.click();

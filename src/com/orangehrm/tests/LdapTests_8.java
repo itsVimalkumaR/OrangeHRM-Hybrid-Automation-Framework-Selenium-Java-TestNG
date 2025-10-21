@@ -26,10 +26,6 @@ public class LdapTests_8 extends BaseTest {
 
     private WebDriverWait wait;
 
-    /* ----------------------------------------------------------------------
-     * Common setup & helper methods
-     * ---------------------------------------------------------------------- */
-
     // Initialize WebDriverWait
     public void setupWait() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -91,12 +87,8 @@ public class LdapTests_8 extends BaseTest {
         }
     }
 
-    /* ----------------------------------------------------------------------
-     * Test Cases
-     * ---------------------------------------------------------------------- */
-
-    // TC_046
-    @Test(priority = 46, description = "Verify Save functionality after selecting first Encryption option")
+    // TC_043
+    @Test(priority = 43, description = "Verify Save functionality after selecting first Encryption option")
     public void verifySaveAfterSelectingFirstEncryptionOption() throws Exception {
         setupWait();
         WebElement encryptionDropdownIcon = driver.findElement(
@@ -108,8 +100,8 @@ public class LdapTests_8 extends BaseTest {
         verifySaveSuccess();
     }
 
-    // TC_047
-    @Test(priority = 47, description = "Verify Save functionality after selecting second Encryption and LDAP Implementation options")
+    // TC_044
+    @Test(priority = 44, description = "Verify Save functionality after selecting second Encryption and LDAP Implementation options")
     public void verifySaveAfterSelectingSecondEncryptionAndLdapImplementation() throws Exception {
         setupWait();
         ldapPage.encryptionDropdown.click();
@@ -125,8 +117,8 @@ public class LdapTests_8 extends BaseTest {
         verifySaveSuccess();
     }
 
-    // TC_048
-    @Test(priority = 48, description = "Verify Test Connection popup after removing UUID field with first Encryption option")
+    // TC_045
+    @Test(priority = 45, description = "Verify Test Connection popup after removing UUID field with first Encryption option")
     public void verifyTestConnectionPopupAfterRemovingUuidFirstEncryption() throws Exception {
         setupWait();
         ldapPage.encryptionDropdown.click();
@@ -138,8 +130,8 @@ public class LdapTests_8 extends BaseTest {
         verifyConnectionPopup();
     }
 
-    // TC_049
-    @Test(priority = 49, description = "Verify Test Connection popup after removing UUID field with second Encryption and LDAP Implementation options")
+    // TC_046
+    @Test(priority = 46, description = "Verify Test Connection popup after removing UUID field with second Encryption and LDAP Implementation options")
     public void verifyTestConnectionPopupAfterRemovingUuidSecondEncryptionAndImplementation() throws Exception {
         setupWait();
         WebElement encryptionDropdownIcon = driver.findElement(
@@ -156,8 +148,8 @@ public class LdapTests_8 extends BaseTest {
         verifyConnectionPopup();
     }
 
-    // TC_050
-    @Test(priority = 50, description = "Verify Save functionality after entering complete LDAP configuration details")
+    // TC_047
+    @Test(priority = 47, description = "Verify Save functionality after entering complete LDAP configuration details")
     public void verifySaveAfterEnteringCompleteLdapConfiguration() throws Exception {
         setupWait();
 

@@ -36,10 +36,8 @@ public class LdapTests_9 extends BaseTest {
         }
     }
 
-    /* ----------------------------------------------------------------------
-     * TC_051: Verify Test Connection popup visibility after entering LDAP data
-     * ---------------------------------------------------------------------- */
-    @Test(priority = 51, description = "Verify Test Connection popup visibility after entering LDAP configuration")
+    // TC_048
+    @Test(priority = 48, description = "Verify Test Connection popup visibility after entering LDAP configuration")
     public void verifyTestConnectionPopupAfterEnteringLdapData() throws Exception {
 
         waitForLoaderToDisappear();
@@ -87,10 +85,8 @@ public class LdapTests_9 extends BaseTest {
         }
     }
 
-    /* ----------------------------------------------------------------------
-     * TC_052: Verify Save functionality after entering LDAP configuration
-     * ---------------------------------------------------------------------- */
-    @Test(priority = 52, description = "Verify Save functionality after entering LDAP configuration values")
+    //TC_049
+    @Test(priority = 49, description = "Verify Save functionality after entering LDAP configuration values")
     public void verifySaveFunctionalityAfterEnteringLdapData() throws Exception {
 
         waitForLoaderToDisappear();

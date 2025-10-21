@@ -17,7 +17,7 @@ import com.orangehrm.utilities.ScreenshotUtil;
  */
 public class LdapTests_4 extends BaseTest {
 
-    // TC_016 - Verify Save button
+    // TC_016
     @Test(priority = 16, description = "Verify Save button functionality")
     public void verifySaveButton() {
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.saveButton)).click();
@@ -25,24 +25,24 @@ public class LdapTests_4 extends BaseTest {
         Assert.assertTrue(ldapPage.saveButton.isEnabled(), "Save button not functional");
     }
 
-    // TC_018 - Verify Bind Settings button
-    @Test(priority = 18, description = "Verify Bind Settings button visibility")
+    // TC_017
+    @Test(priority = 17, description = "Verify Bind Settings button visibility")
     public void verifyBindButton() {
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.bindButton)).click();
         Reporter.log("Clicked Bind Settings button", true);
         Assert.assertTrue(ldapPage.bindButton.isDisplayed(), "Bind button hidden");
     }
 
-    // TC_020 - Click LDAP toggle and Save
-    @Test(priority = 20, description = "Click LDAP toggle and then Save button")
+    // TC_018
+    @Test(priority = 18, description = "Click LDAP toggle and then Save button")
     public void clickLdapToggleAndSave() {
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.ldapToggleBtn)).click();
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.saveButton)).click();
         Reporter.log("Clicked LDAP toggle and Save button", true);
     }
 
-    // TC_021 - Click LDAP toggle and Test Connection
-    @Test(priority = 21, description = "Click LDAP toggle and Test Connection button")
+    // TC_019
+    @Test(priority = 19, description = "Click LDAP toggle and Test Connection button")
     public void clickLdapToggleAndTestConnection() {
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.ldapToggleBtn)).click();
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.testConnectionButton)).click();
@@ -50,8 +50,8 @@ public class LdapTests_4 extends BaseTest {
         Assert.assertTrue(ldapPage.testConnectionButton.isEnabled(), "Test Connection button not working");
     }
 
-    // TC_022 - Click all toggles and handle exceptions
-    @Test(priority = 22, description = "Click all toggle buttons and handle exceptions")
+    // TC_020
+    @Test(priority = 20, description = "Click all toggle buttons and handle exceptions")
     public void clickAllTogglesAndTestConnection() {
         wait.until(ExpectedConditions.elementToBeClickable(ldapPage.ldapToggleBtn)).click();
         List<WebElement> toggles = ldapPage.allTogglesBtn;
